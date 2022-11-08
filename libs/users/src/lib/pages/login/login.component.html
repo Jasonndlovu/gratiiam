@@ -1,0 +1,48 @@
+<div class="login-register">
+    <div class="login-register-panel">
+      <div class="grid">
+        
+        <div class="col-12 p-5">
+          <h3 style="text-align: center;">Welcome!</h3>
+          <h2 style="text-align: center;">Login Page</h2>
+          <form [formGroup]="loginFormGroup">
+            <div class="grid mt-6">
+              <div class="col-12" style="text-align: center;">
+                <div class="inputgroup">
+                  <span class="inputgroup-addon"><i class="pi pi-user"></i></span>
+                  <input type="text" formControlName="email" pInputText placeholder="Email" />
+                </div>
+                <small *ngIf="loginForm['email'].invalid && isSubmitted" class="p-error"
+                  ><span *ngIf="loginForm['email'].errors['required']">email is required</span>
+                  <span *ngIf="loginForm['email'].errors['email']">email is invalid</span></small>
+              </div>
+              <div class="col-12" style="text-align: center;">
+                <div class="inputgroup">
+                  <span class="inputgroup-addon"><i class="pi pi-lock"></i></span>
+                  <input
+                    type="password"
+                    formControlName="password"
+                    pInputText
+                    placeholder="Password"
+                  />
+                </div>
+                <small *ngIf="loginForm['password'].invalid && isSubmitted" class="error">Password is required
+                </small>
+              </div>
+              <div class="col-12" style="text-align: center;">
+                <p-button label="Submit" styleClass="full-btn" (onClick)="onSubmit()"></p-button>
+              </div>
+              <div class="col-12" *ngIf="isSubmitted && authError">
+                <small class="error">{{ authMessage }}</small>
+              </div>
+            </div>
+            <p-button label="Register" styleClass="full-btn" (onClick)="Register()"></p-button>
+            
+
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  

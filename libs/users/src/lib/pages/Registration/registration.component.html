@@ -1,0 +1,69 @@
+<div class="login-register">
+    <div class="login-register-panel">
+      <div class="grid">
+        <div class="col-12 p-5">
+          <h3 style="text-align: center;">Welcome!</h3>
+          <h2 style="text-align: center;">Registration Page</h2>
+          <form [formGroup]="RegistrationFormGroup">
+            <div class="grid ">
+              <div class="col-12" style="text-align: center;">
+                <div class="inputgroup">
+                  <span class="inputgroup-addon"><i class="pi pi-user"></i></span>
+                  <input type="text" formControlName="name" pInputText placeholder="Name" />
+                </div>
+                <small *ngIf="registrationForm['name'].invalid && isSubmitted" class="p-error"
+                  ><span *ngIf="registrationForm['name'].errors['required']">email is required</span>
+                  <span *ngIf="registrationForm['name'].errors['name']">email is invalid</span></small>
+              </div>
+
+              <div class="col-12" style="text-align: center;">
+                <div class="inputgroup">
+                  <span class="inputgroup-addon"><i class="pi pi-user"></i></span>
+                  <input type="text" formControlName="surname" pInputText placeholder="Surname" />
+                </div>
+                <small *ngIf="registrationForm['surname'].invalid && isSubmitted" class="p-error"
+                  ><span *ngIf="registrationForm['surname'].errors['required']">email is required</span>
+                  <span *ngIf="registrationForm['surname'].errors['surname']">email is invalid</span></small>
+              </div>
+
+              <div class="col-12" style="text-align: center;">
+                <div class="inputgroup">
+                  <span class="inputgroup-addon"><i class="pi pi-user"></i></span>
+                  <input type="text" formControlName="email" pInputText placeholder="Email" />
+                </div>
+                <small *ngIf="registrationForm['email'].invalid && isSubmitted" class="p-error"
+                  ><span *ngIf="registrationForm['email'].errors['required']">email is required</span>
+                  <span *ngIf="registrationForm['email'].errors['email']">email is invalid</span></small>
+              </div>
+              <div class="col-12" style="text-align: center;">
+                <div class="inputgroup">
+                  <span class="inputgroup-addon"><i class="pi pi-lock"></i></span>
+                  <input type="password" formControlName="password" pInputText placeholder="Password"/>
+                </div>
+                <small *ngIf="registrationForm['password'].invalid && isSubmitted" class="error">Password is required
+                </small>
+              </div>
+              <div class="col-12" style="text-align: center;">
+                <div class="inputgroup">
+                  <span class="inputgroup-addon"><i class="pi pi-lock"></i></span>
+                  <input type="password" formControlName="password_" pInputText placeholder="Re-enter Password"/>
+                </div>
+                <small *ngIf="registrationForm['password_'].invalid && isSubmitted" class="error">Password is required
+                </small>
+              </div>
+              <div class="col-12" style="text-align: center;">
+                <p-button label="Submit" styleClass="full-btn" (onClick)="onSubmit()"></p-button>
+                
+              </div>
+              <div class="col-12" *ngIf="isSubmitted && authError">
+                <small class="error">{{ authMessage }}</small>
+              </div>
+              
+            </div>
+            <p-button label="Login" styleClass="full-btn" (onClick)="login()"></p-button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  

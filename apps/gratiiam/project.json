@@ -1,0 +1,86 @@
+{
+    "projectType": "application",
+    "sourceRoot": "apps/gratiiam/src",
+    "prefix": "comp",
+    "targets": {
+        "build": {
+            "executor": "@angular-devkit/build-angular:browser",
+            "outputs": ["{options.outputPath}"],
+            "options": {
+                "outputPath": "dist/apps/gratiiam",
+                "index": "apps/gratiiam/src/index.html",
+                "main": "apps/gratiiam/src/main.ts",
+                "polyfills": "apps/gratiiam/src/polyfills.ts",
+                "tsConfig": "apps/gratiiam/tsconfig.app.json",
+                "assets": ["apps/gratiiam/src/favicon.ico", "apps/gratiiam/src/assets"],
+                "styles": ["apps/gratiiam/src/styles.scss"],
+                "scripts": []
+            },
+            "configurations": {
+                "production": {
+                    "budgets": [
+                        {
+                            "type": "initial",
+                            "maximumWarning": "2mb",
+                            "maximumError": "5mb"
+                        },
+                        {
+                            "type": "anyComponentStyle",
+                            "maximumWarning": "2kb",
+                            "maximumError": "4kb"
+                        }
+                    ],
+                    "fileReplacements": [
+                        {
+                            "replace": "environments/environment.ts",
+                            "with": "environments/environment.prod.ts"
+                        }
+                    ],
+                    "outputHashing": "all"
+                },
+                "development": {
+                    "buildOptimizer": false,
+                    "optimization": false,
+                    "vendorChunk": true,
+                    "extractLicenses": false,
+                    "sourceMap": true,
+                    "namedChunks": true
+                }
+            },
+            "defaultConfiguration": "production"
+        },
+        "serve": {
+            "executor": "@angular-devkit/build-angular:dev-server",
+            "configurations": {
+                "production": {
+                    "browserTarget": "gratiiam:build:production"
+                },
+                "development": {
+                    "browserTarget": "gratiiam:build:development"
+                }
+            },
+            "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+            "executor": "@angular-devkit/build-angular:extract-i18n",
+            "options": {
+                "browserTarget": "gratiiam:build"
+            }
+        },
+        "lint": {
+            "executor": "@nrwl/linter:eslint",
+            "options": {
+                "lintFilePatterns": ["apps/gratiiam/**/*.ts", "apps/gratiiam/**/*.html"]
+            }
+        },
+        "test": {
+            "executor": "@nrwl/jest:jest",
+            "outputs": ["coverage/apps/gratiiam"],
+            "options": {
+                "jestConfig": "apps/gratiiam/jest.config.ts",
+                "passWithNoTests": true
+            }
+        }
+    },
+    "tags": []
+}
