@@ -64,7 +64,7 @@ export class CheckoutPageComponent implements OnInit, OnDestroy {
   }
 
   private _autoFillUserData() {
-    //console.log(this.userId);
+    console.log(this.userId);
     this.usersService
       .observeCurrentUser()
       .pipe(takeUntil(this.unsubscribe$)) //.pipe(take(1)) //
