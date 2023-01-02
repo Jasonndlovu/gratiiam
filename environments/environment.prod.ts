@@ -1,5 +1,5 @@
 export const environment = {
     production: true,
-    apiURL: "https://xisd6319.herokuapp.com/api/v1/"
+    apiURL: "https://rest-api-cyyo.onrender.com/api/v1/"
 };
 
